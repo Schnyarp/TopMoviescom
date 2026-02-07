@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theater - Watch & Download AI Movies | TopMovies.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 1.5rem 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #000000;
+            font-family: 'Didot', 'Bodoni MT', 'Book Antiqua', serif;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .coming-soon-banner {
+            background: #fffacd;
+            color: #ff6b00;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: rotate(-3deg);
+            border: 2px solid #ffd700;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+            animation: gentle-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% {
+                transform: rotate(-3deg) scale(1);
+            }
+            50% {
+                transform: rotate(-3deg) scale(1.08);
+            }
+        }
+
+        .clapper-board {
+            width: 60px;
+            height: 60px;
+        }
+
+        .clapper-board svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e9ecef;
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #2c2c2c;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .nav-item.active {
+            color: #667eea;
+        }
+
+        .nav-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #141E30 0%, #243B55 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(220, 20, 60, 0.1) 0%, transparent 50%);
+            animation: theater-lights 5s ease-in-out infinite;
+        }
+
+        @keyframes theater-lights {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 0.9; }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(220, 20, 60, 0.9);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border: 3px solid #ffd700;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(220, 20, 60, 0.5);
+        }
+
+        /* Main Content */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        /* Featured Movies */
+        .featured-section {
+            margin-bottom: 4rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ffd700;
+            color: #1a1a1a;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .featured-content h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .meta-badge {
+            background: #f0f7ff;
+            color: #667eea;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Categories Section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Popcorn Section */
+        .popcorn-section {
+            background: linear-gradient(135deg, #FFE985 0%, #FA742B 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: 0 10px 30px rgba(250, 116, 43, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popcorn-section::before {
+            content: '🍿';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+        }
+
+        .popcorn-section h3 {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .popcorn-section p {
+            font-size: 1.2rem;
+            color: #2c2c2c;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .popcorn-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .popcorn-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            background: #2c2c2c;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        .footer-network {
+            background: #0a0a0a;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+
+        .footer-copyright {
+            background: #f5f5f5;
+            padding: 1rem;
+        }
+
+        .footer-copyright a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .footer-copyright a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="clapper-board">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Clapper board base -->
+                        <rect x="10" y="45" width="80" height="45" fill="#2a2a2a" stroke="#000" stroke-width="2"/>
+                        
+                        <!-- Clapper top (OPEN position - angled) -->
+                        <g transform="rotate(-25 50 35)">
+                            <rect x="10" y="20" width="80" height="18" fill="#fff" stroke="#000" stroke-width="2"/>
+                            
+                            <!-- Black and white stripes on clapper -->
+                            <rect x="10" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="42" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="74" y="20" width="16" height="18" fill="#000"/>
+                        </g>
+                        
+                        <!-- Details on base -->
+                        <rect x="15" y="55" width="30" height="3" fill="#667eea"/>
+                        <rect x="15" y="63" width="40" height="3" fill="#667eea"/>
+                        <rect x="15" y="71" width="35" height="3" fill="#667eea"/>
+                    </svg>
+                </div>
+                <a href="index.html" class="logo">TopMovies.com</a>
+                <div class="coming-soon-banner">Coming Soon!</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="about.html" class="nav-item">
+                    <span class="nav-icon">ℹ️</span>
+                    <span class="nav-label">About</span>
+                </a>
+                <a href="join.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Join</span>
+                </a>
+                <a href="reviews.html" class="nav-item">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Reviews</span>
+                </a>
+                <a href="theater.html" class="nav-item active">
+                    <span class="nav-icon">🎭</span>
+                    <span class="nav-label">Theater</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-icon">🎭</div>
+        <h1>The AI Cinema Theater</h1>
+        <p class="tagline">Stream, Download, and Discover Amazing AI Movies</p>
+        <p>Your destination for the world's best AI-generated films. Browse by category, 
+           discover trending titles, and enjoy cinema in stunning quality—including 4K downloads.</p>
+        <div class="hero-badge">🎬 OPENING SOON 🎬</div>
+    </div>
+
+    <div class="content-section">
+        <div class="intro-text">
+            <p>
+                The TopMovies.com Theater will be your gateway to an ever-growing library of AI-generated cinema. 
+                From blockbuster epics to intimate dramas, find your next favorite film with our powerful search, 
+                smart rankings, and curated selections. Plus, enjoy flexible viewing options including free content 
+                and premium titles.
+            </p>
+        </div>
+
+        <!-- Featured Movies -->
+        <section class="featured-section">
+            <h2 class="section-title">Featured Selections</h2>
+            
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-badge">🏆 MOVIE OF THE DAY</div>
+                    <div class="featured-image">🎬</div>
+                    <div class="featured-content">
+                        <h3>Daily Featured Film</h3>
+                        <p>Every day, we'll spotlight an exceptional AI-generated movie that showcases the best of creativity, 
+                           storytelling, and technical achievement. Discover hidden gems and creator highlights.</p>
+                        <div class="featured-meta">
+                            <span class="meta-badge">🆓 Often Free</span>
+                            <span class="meta-badge">⭐ Top Rated</span>
+                            <span class="meta-badge">📥 4K Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <div class="featured-badge">⭐ MOVIE OF THE WEEK</div>
+                    <div class="featured-image">🌟</div>
+                    <div class="featured-content">
+                        <h3>Weekly Spotlight</h3>
+                        <p>Each week, we celebrate a standout film that's generating buzz in the community. These are the 
+                           must-see titles that everyone is talking about.</p>
+                        <div class="featured-meta">
+                            <span class="meta-badge">🔥 Trending</span>
+                            <span class="meta-badge">💬 Most Reviewed</span>
+                            <span class="meta-badge">📺 HD & 4K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section>
+            <h2 class="section-title">Browse by Genre</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🚀</div>
+                    <h3>Sci-Fi</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🎭</div>
+                    <h3>Drama</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">💥</div>
+                    <h3>Action</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">😂</div>
+                    <h3>Comedy</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">😱</div>
+                    <h3>Horror</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🔮</div>
+                    <h3>Fantasy</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🕵️</div>
+                    <h3>Mystery</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">❤️</div>
+                    <h3>Romance</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Experimental</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">📚</div>
+                    <h3>Documentary</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🎬</div>
+                    <h3>Short Films</h3>
+                    <p class="category-count">Coming Soon</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🌟</div>
+                    <h3>All Genres</h3>
+                    <p class="category-count">Explore Everything</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theater Features -->
+        <section>
+            <h2 class="section-title">Theater Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">���💰</div>
+                    <h3>Free & Premium</h3>
+                    <p>Browse movies by price. Enjoy a vast library of free content or support creators by purchasing premium titles. 
+                       Clear pricing displayed on every film.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Trending & Popular</h3>
+                    <p>See what's hot right now. Our rankings highlight the most-watched, highest-rated, and fastest-rising films 
+                       in the AI cinema community.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📥</div>
+                    <h3>Download Options</h3>
+                    <p>Stream online or download for offline viewing. Multiple quality options including HD (1080p) and 
+                       stunning 4K (2160p) for the ultimate experience.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Smart Search</h3>
+                    <p>Find exactly what you're looking for with advanced search filters. Search by genre, duration, rating, 
+                       creator, characters, or keywords.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Custom Rankings</h3>
+                    <p>Sort and filter by rating, views, release date, or trending status. Create your personal watchlist 
+                       and track what you've seen.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Recommendations</h3>
+                    <p>Get personalized movie suggestions based on your viewing history and preferences. Discover films 
+                       you'll love from creators you may not know yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popcorn Section -->
+        <div class="popcorn-section">
+            <h3>🍿 Complete Your Movie Experience!</h3>
+            <p>No movie night is complete without the perfect snack. Check out our partner popcorn vendors 
+               and have delicious treats delivered right to your door!</p>
+            <a href="#" class="popcorn-button">Shop Popcorn & Snacks 🍿</a>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>The Show Starts Soon!</h2>
+            <p>
+                The TopMovies.com Theater is preparing for its grand opening. Be ready to explore thousands of 
+                AI-generated films, support amazing creators, and experience cinema like never before.
+            </p>
+            <a href="#" class="cta-button">Get Notified at Launch</a>
+            
+            <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.9;">
+                Early access members will get exclusive previews and special launch day offers!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-network">
+            <p style="font-size: 0.9rem;">
+                Part of the TopPicks.com Network: TopMovies.com | TopBooks.com | TopHits.com | TopVideos.com
+            </p>
+        </div>
+        <div class="footer-copyright">
+            <p style="color: #2c2c2c;">&copy; 2026 TopMovies.com - AI-Generated Cinema | The Future is Now | 
+                <a href="terms.html">Terms</a> | 
+                <a href="privacy.html">Privacy</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
