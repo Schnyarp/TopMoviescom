@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - TopMovies.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 1.5rem 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #000000;
+            font-family: 'Didot', 'Bodoni MT', 'Book Antiqua', serif;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .coming-soon-banner {
+            background: #fffacd;
+            color: #ff6b00;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: rotate(-3deg);
+            border: 2px solid #ffd700;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+            animation: gentle-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% {
+                transform: rotate(-3deg) scale(1);
+            }
+            50% {
+                transform: rotate(-3deg) scale(1.08);
+            }
+        }
+
+        .clapper-board {
+            width: 60px;
+            height: 60px;
+        }
+
+        .clapper-board svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e9ecef;
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #2c2c2c;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .nav-item.active {
+            color: #667eea;
+        }
+
+        .nav-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+            animation: star-shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes star-shimmer {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stars {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            animation: star-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes star-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 250, 205, 0.95);
+            color: #ff6b00;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: 3px solid #ffd700;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        /* Two Column Layout */
+        .two-column-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .column-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .column-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .column-card.creators {
+            border-color: #667eea;
+        }
+
+        .column-card.viewers {
+            border-color: #f5576c;
+        }
+
+        .column-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .column-card.creators h2 {
+            color: #667eea;
+        }
+
+        .column-card.viewers h2 {
+            color: #f5576c;
+        }
+
+        .column-icon {
+            font-size: 2.5rem;
+        }
+
+        .column-card p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .column-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .column-card ul li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .column-card ul li::before {
+            content: '⭐';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e9ecef;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 216, 155, 0.3);
+            border-color: #ffd89b;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #19547b;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 216, 155, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(255, 216, 155, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        .footer-network {
+            background: #0a0a0a;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+
+        .footer-copyright {
+            background: #f5f5f5;
+            padding: 1rem;
+        }
+
+        .footer-copyright a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .footer-copyright a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="clapper-board">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Clapper board base -->
+                        <rect x="10" y="45" width="80" height="45" fill="#2a2a2a" stroke="#000" stroke-width="2"/>
+                        
+                        <!-- Clapper top (OPEN position - angled) -->
+                        <g transform="rotate(-25 50 35)">
+                            <rect x="10" y="20" width="80" height="18" fill="#fff" stroke="#000" stroke-width="2"/>
+                            
+                            <!-- Black and white stripes on clapper -->
+                            <rect x="10" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="42" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="74" y="20" width="16" height="18" fill="#000"/>
+                        </g>
+                        
+                        <!-- Details on base -->
+                        <rect x="15" y="55" width="30" height="3" fill="#667eea"/>
+                        <rect x="15" y="63" width="40" height="3" fill="#667eea"/>
+                        <rect x="15" y="71" width="35" height="3" fill="#667eea"/>
+                    </svg>
+                </div>
+                <a href="index.html" class="logo">TopMovies.com</a>
+                <div class="coming-soon-banner">Coming Soon!</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="about.html" class="nav-item">
+                    <span class="nav-icon">ℹ️</span>
+                    <span class="nav-label">About</span>
+                </a>
+                <a href="join.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Join</span>
+                </a>
+                <a href="reviews.html" class="nav-item active">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Reviews</span>
+                </a>
+                <a href="theater.html" class="nav-item">
+                    <span class="nav-icon">🎭</span>
+                    <span class="nav-label">Theater</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-stars">⭐⭐⭐⭐⭐</div>
+        <h1>Movie Reviews & Ratings</h1>
+        <p class="tagline">Where Creators Learn and Viewers Decide</p>
+        <p>The voice of the audience matters. TopMovies.com will feature a comprehensive review system 
+           that empowers both creators and movie lovers to engage in meaningful dialogue.</p>
+        <div class="hero-badge">🎬 LAUNCHING SOON 🎬</div>
+    </div>
+
+    <div class="content-section">
+        <div class="intro-text">
+            <p>
+                Reviews are the bridge between creators and audiences. They provide invaluable feedback that helps 
+                filmmakers improve their craft while giving viewers the insights they need to discover their next 
+                favorite movie. Our review system is designed to benefit everyone in the TopMovies.com community.
+            </p>
+        </div>
+
+        <!-- Two Column Section -->
+        <section class="two-column-section">
+            <div class="column-card creators">
+                <h2>
+                    <span class="column-icon">🎬</span>
+                    For Creators
+                </h2>
+                <p>
+                    Reviews are your direct line to audience insights. Learn what resonates, what needs improvement, 
+                    and how your work impacts viewers. Use this feedback to refine your craft and grow as a filmmaker.
+                </p>
+                <ul>
+                    <li>Receive detailed audience feedback on your films</li>
+                    <li>Understand what viewers love about your work</li>
+                    <li>Identify areas for creative growth and improvement</li>
+                    <li>Track your ratings and reviews over time</li>
+                    <li>Engage directly with your audience through responses</li>
+                    <li>Build a reputation based on quality and innovation</li>
+                    <li>Use insights to guide future creative decisions</li>
+                    <li>Discover which themes and styles resonate most</li>
+                </ul>
+            </div>
+
+            <div class="column-card viewers">
+                <h2>
+                    <span class="column-icon">👥</span>
+                    For Viewers
+                </h2>
+                <p>
+                    Your opinion matters! Help fellow movie buffs discover great films and support creators with 
+                    constructive feedback. Build your reputation as a trusted voice in the AI cinema community.
+                </p>
+                <ul>
+                    <li>Read authentic reviews from fellow movie enthusiasts</li>
+                    <li>Share your thoughts and help others decide what to watch</li>
+                    <li>Rate movies across multiple dimensions</li>
+                    <li>Follow reviewers whose taste aligns with yours</li>
+                    <li>Discover hidden gems through community recommendations</li>
+                    <li>Filter reviews by rating, date, or helpfulness</li>
+                    <li>Build your profile as a respected critic</li>
+                    <li>Influence the AI cinema landscape with your feedback</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section>
+            <h2 class="section-title">Powerful Review Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🔍</span>
+                    <h3>Advanced Search</h3>
+                    <p>Find movies by genre, rating, director, characters, themes, or keywords. Our powerful search helps you discover exactly what you're looking for.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Smart Rankings</h3>
+                    <p>Browse movies ranked by overall rating, number of reviews, trending status, or personalized recommendations based on your viewing history.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h3>Top Lists</h3>
+                    <p>Explore curated lists of top-rated movies by genre, time period, or special categories. See what the community loves most.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3>Detailed Reviews</h3>
+                    <p>Write comprehensive reviews covering story, visuals, characters, pacing, and more. Help others understand what makes each film special.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Quick Ratings</h3>
+                    <p>Rate movies instantly with our simple star system, or dive deeper with category-specific ratings for different aspects of filmmaking.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Personalized Feed</h3>
+                    <p>Get movie recommendations tailored to your preferences based on your ratings, reviews, and viewing history.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlight Box -->
+        <div class="highlight-box">
+            <h3>🌟 Building a Better Community Together</h3>
+            <p>
+                Our review system is designed to foster constructive dialogue and mutual growth. Creators gain valuable 
+                insights to improve their craft. Viewers help each other discover quality content. Together, we build 
+                a community where AI cinema thrives through honest, respectful feedback and shared appreciation for 
+                creative innovation.
+            </p>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Be Ready to Review</h2>
+            <p>
+                When TopMovies.com launches, be among the first to share your voice. Whether you're a creator seeking 
+                feedback or a movie buff ready to guide others, our review platform will be your space to connect, 
+                learn, and discover.
+            </p>
+            <a href="#" class="cta-button">Get Notified at Launch</a>
+            
+            <p style="margin-top: 2rem; font-size: 1rem; color: #999;">
+                Early members will have the opportunity to review exclusive preview content and help shape our 
+                review community guidelines.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-network">
+            <p style="font-size: 0.9rem;">
+                Part of the TopPicks.com Network: TopMovies.com | TopBooks.com | TopHits.com | TopVideos.com
+            </p>
+        </div>
+        <div class="footer-copyright">
+            <p style="color: #2c2c2c;">&copy; 2026 TopMovies.com - AI-Generated Cinema | The Future is Now | 
+                <a href="terms.html">Terms</a> | 
+                <a href="privacy.html">Privacy</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
