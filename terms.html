@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - TopMovies.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 1.5rem 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #000000;
+            font-family: 'Didot', 'Bodoni MT', 'Book Antiqua', serif;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .coming-soon-banner {
+            background: #fffacd;
+            color: #ff6b00;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: rotate(-3deg);
+            border: 2px solid #ffd700;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+            animation: gentle-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% {
+                transform: rotate(-3deg) scale(1);
+            }
+            50% {
+                transform: rotate(-3deg) scale(1.08);
+            }
+        }
+
+        .clapper-board {
+            width: 60px;
+            height: 60px;
+        }
+
+        .clapper-board svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e9ecef;
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #2c2c2c;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .nav-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(192, 192, 192, 0.3) 0%, 
+                rgba(169, 169, 169, 0.2) 25%,
+                rgba(192, 192, 192, 0.3) 50%,
+                rgba(169, 169, 169, 0.2) 75%,
+                rgba(192, 192, 192, 0.3) 100%);
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .content-box h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        .content-box p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #fffacd;
+            color: #ff6b00;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 3px solid #ffd700;
+            margin: 2rem 0;
+        }
+
+        .icon-large {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        .footer-network {
+            background: #0a0a0a;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+
+        .footer-copyright {
+            background: #f5f5f5;
+            padding: 1rem;
+        }
+
+        .footer-copyright a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .footer-copyright a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="clapper-board">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Clapper board base -->
+                        <rect x="10" y="45" width="80" height="45" fill="#2a2a2a" stroke="#000" stroke-width="2"/>
+                        
+                        <!-- Clapper top (OPEN position - angled) -->
+                        <g transform="rotate(-25 50 35)">
+                            <rect x="10" y="20" width="80" height="18" fill="#fff" stroke="#000" stroke-width="2"/>
+                            
+                            <!-- Black and white stripes on clapper -->
+                            <rect x="10" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="42" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="74" y="20" width="16" height="18" fill="#000"/>
+                        </g>
+                        
+                        <!-- Details on base -->
+                        <rect x="15" y="55" width="30" height="3" fill="#667eea"/>
+                        <rect x="15" y="63" width="40" height="3" fill="#667eea"/>
+                        <rect x="15" y="71" width="35" height="3" fill="#667eea"/>
+                    </svg>
+                </div>
+                <a href="index.html" class="logo">TopMovies.com</a>
+                <div class="coming-soon-banner">Coming Soon!</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="about.html" class="nav-item">
+                    <span class="nav-icon">ℹ️</span>
+                    <span class="nav-label">About</span>
+                </a>
+                <a href="join.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Join</span>
+                </a>
+                <a href="reviews.html" class="nav-item">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Reviews</span>
+                </a>
+                <a href="theater.html" class="nav-item">
+                    <span class="nav-icon">🎭</span>
+                    <span class="nav-label">Theater</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Terms of Service</h1>
+        <p>Building a Fair and Transparent Platform</p>
+    </div>
+
+    <div class="content-section">
+        <div class="content-box">
+            <div class="icon-large">📋</div>
+            <h2>Terms of Service Coming Soon</h2>
+            
+            <div class="status-badge">In Development</div>
+            
+            <p>
+                We are carefully crafting our Terms of Service to ensure clarity, fairness, and transparency 
+                for all members of the TopMovies.com community.
+            </p>
+            
+            <p>
+                Our terms will outline the rights and responsibilities of creators, viewers, and the platform itself. 
+                We're committed to creating policies that protect intellectual property, ensure fair compensation for 
+                creators, and foster a positive community environment.
+            </p>
+            
+            <p>
+                Complete Terms of Service will be published before the platform launches. These terms will cover:
+            </p>
+            
+            <p style="text-align: left; max-width: 600px; margin: 2rem auto;">
+                • User account responsibilities<br>
+                • Content ownership and licensing<br>
+                • Creator monetization and payments<br>
+                • Community guidelines and standards<br>
+                • Copyright and intellectual property rights<br>
+                • Platform usage policies<br>
+                • Dispute resolution procedures
+            </p>
+            
+            <p>
+                Thank you for your patience as we develop comprehensive terms that serve everyone in our community fairly.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-network">
+            <p style="font-size: 0.9rem;">
+                Part of the TopPicks.com Network: TopMovies.com | TopBooks.com | TopHits.com | TopVideos.com
+            </p>
+        </div>
+        <div class="footer-copyright">
+            <p style="color: #2c2c2c;">&copy; 2026 TopMovies.com - AI-Generated Cinema | The Future is Now | 
+                <a href="terms.html">Terms</a> | 
+                <a href="privacy.html">Privacy</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

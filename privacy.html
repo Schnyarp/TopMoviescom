@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - TopMovies.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 1.5rem 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #000000;
+            font-family: 'Didot', 'Bodoni MT', 'Book Antiqua', serif;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .coming-soon-banner {
+            background: #fffacd;
+            color: #ff6b00;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: rotate(-3deg);
+            border: 2px solid #ffd700;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+            animation: gentle-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% {
+                transform: rotate(-3deg) scale(1);
+            }
+            50% {
+                transform: rotate(-3deg) scale(1.08);
+            }
+        }
+
+        .clapper-board {
+            width: 60px;
+            height: 60px;
+        }
+
+        .clapper-board svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e9ecef;
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #2c2c2c;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .nav-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-box h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content-box h3 {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin: 2rem 0 1rem;
+        }
+
+        .content-box p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-large {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .commitment-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+            border-left: 5px solid #667eea;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .commitment-box h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .commitment-box p {
+            color: #2c3e50;
+            margin-bottom: 0;
+        }
+
+        .commitment-list {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .commitment-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .commitment-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .commitment-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        .footer-network {
+            background: #0a0a0a;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+
+        .footer-copyright {
+            background: #f5f5f5;
+            padding: 1rem;
+        }
+
+        .footer-copyright a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .footer-copyright a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="clapper-board">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Clapper board base -->
+                        <rect x="10" y="45" width="80" height="45" fill="#2a2a2a" stroke="#000" stroke-width="2"/>
+                        
+                        <!-- Clapper top (OPEN position - angled) -->
+                        <g transform="rotate(-25 50 35)">
+                            <rect x="10" y="20" width="80" height="18" fill="#fff" stroke="#000" stroke-width="2"/>
+                            
+                            <!-- Black and white stripes on clapper -->
+                            <rect x="10" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="42" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="74" y="20" width="16" height="18" fill="#000"/>
+                        </g>
+                        
+                        <!-- Details on base -->
+                        <rect x="15" y="55" width="30" height="3" fill="#667eea"/>
+                        <rect x="15" y="63" width="40" height="3" fill="#667eea"/>
+                        <rect x="15" y="71" width="35" height="3" fill="#667eea"/>
+                    </svg>
+                </div>
+                <a href="index.html" class="logo">TopMovies.com</a>
+                <div class="coming-soon-banner">Coming Soon!</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="about.html" class="nav-item">
+                    <span class="nav-icon">ℹ️</span>
+                    <span class="nav-label">About</span>
+                </a>
+                <a href="join.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Join</span>
+                </a>
+                <a href="reviews.html" class="nav-item">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Reviews</span>
+                </a>
+                <a href="theater.html" class="nav-item">
+                    <span class="nav-icon">🎭</span>
+                    <span class="nav-label">Theater</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Privacy Policy</h1>
+        <p>Your Privacy, Our Priority</p>
+    </div>
+
+    <div class="content-section">
+        <div class="content-box">
+            <div class="icon-large">🔒</div>
+            <h2>Your Data is Safe With Us</h2>
+            
+            <p>
+                At TopMovies.com, we believe your privacy is fundamental. We are committed to protecting your personal 
+                information and being transparent about how we collect, use, and safeguard your data.
+            </p>
+
+            <div class="commitment-box">
+                <h3>🛡️ Our Core Privacy Commitment</h3>
+                <p>
+                    <strong>We will never compromise your user data or sell your movie preferences.</strong> Your viewing 
+                    habits, ratings, reviews, and preferences are yours alone. We do not sell, rent, or share your personal 
+                    information or viewing data with third parties for marketing purposes.
+                </p>
+            </div>
+
+            <h3>What This Means for You</h3>
+            
+            <div class="commitment-list">
+                <ul>
+                    <li><strong>Your viewing history stays private</strong> - We don't sell data about what you watch</li>
+                    <li><strong>Your preferences are protected</strong> - Your movie tastes, ratings, and reviews are confidential</li>
+                    <li><strong>No third-party tracking for ads</strong> - We don't allow advertisers to track your behavior</li>
+                    <li><strong>Secure account information</strong> - Your personal details are encrypted and protected</li>
+                    <li><strong>You control your data</strong> - Access, download, or delete your information at any time</li>
+                    <li><strong>Transparent practices</strong> - Clear explanations of what data we collect and why</li>
+                    <li><strong>Creator privacy respected</strong> - Your creative work and account details remain secure</li>
+                </ul>
+            </div>
+
+            <h3>Data We May Collect</h3>
+            <p>
+                To provide you with the best experience on TopMovies.com, we may collect certain information necessary 
+                for the platform to function:
+            </p>
+            <p>
+                • Account information (email, username, password)<br>
+                • Content you upload or create (for creators)<br>
+                • Reviews and ratings you submit (with your permission to display publicly)<br>
+                • Technical information to improve platform performance<br>
+                • Payment information (processed securely through third-party payment processors)
+            </p>
+
+            <h3>How We Use Your Data</h3>
+            <p>
+                Any data we collect is used solely to enhance your experience:
+            </p>
+            <p>
+                • Personalizing your movie recommendations<br>
+                • Improving our platform and features<br>
+                • Processing payments for creators and premium content<br>
+                • Communicating important platform updates<br>
+                • Ensuring platform security and preventing fraud
+            </p>
+
+            <div class="commitment-box">
+                <h3>🤝 Your Rights</h3>
+                <p>
+                    You have complete control over your data. You can access your information, request corrections, 
+                    download your data, or delete your account at any time through your account settings. We will honor 
+                    all privacy requests promptly and completely.
+                </p>
+            </div>
+
+            <h3>Coming Soon: Complete Privacy Policy</h3>
+            <p>
+                Our full Privacy Policy, detailing all aspects of data collection, usage, storage, and protection, 
+                will be published before platform launch. This comprehensive policy will be written in clear, 
+                understandable language—no confusing legal jargon.
+            </p>
+
+            <p>
+                We're committed to setting a new standard for privacy in entertainment platforms. Your trust is 
+                essential, and we will earn it every day.
+            </p>
+
+            <p style="text-align: center; margin-top: 3rem; font-style: italic; color: #667eea;">
+                Questions about privacy? Contact us at privacy@topmovies.com
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-network">
+            <p style="font-size: 0.9rem;">
+                Part of the TopPicks.com Network: TopMovies.com | TopBooks.com | TopHits.com | TopVideos.com
+            </p>
+        </div>
+        <div class="footer-copyright">
+            <p style="color: #2c2c2c;">&copy; 2026 TopMovies.com - AI-Generated Cinema | The Future is Now | 
+                <a href="terms.html">Terms</a> | 
+                <a href="privacy.html">Privacy</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
