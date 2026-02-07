@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMovies.com - AI-Generated Movies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 1.5rem 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #000000;
+            font-family: 'Didot', 'Bodoni MT', 'Book Antiqua', serif;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .coming-soon-banner {
+            background: #fffacd;
+            color: #ff6b00;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: rotate(-3deg);
+            border: 2px solid #ffd700;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+            animation: gentle-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% {
+                transform: rotate(-3deg) scale(1);
+            }
+            50% {
+                transform: rotate(-3deg) scale(1.08);
+            }
+        }
+
+        .clapper-board {
+            width: 60px;
+            height: 60px;
+        }
+
+        .clapper-board svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e9ecef;
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #2c2c2c;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .nav-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(192, 192, 192, 0.3) 0%, 
+                rgba(169, 169, 169, 0.2) 25%,
+                rgba(192, 192, 192, 0.3) 50%,
+                rgba(169, 169, 169, 0.2) 75%,
+                rgba(192, 192, 192, 0.3) 100%);
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tagline {
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 2px solid #bdc3c7;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            background: #34495e;
+        }
+
+        .feature-image {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #555;
+        }
+
+        /* AI Movie Stars Section */
+        .stars-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stars-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(192, 192, 192, 0.3) 0%, 
+                rgba(169, 169, 169, 0.2) 25%,
+                rgba(192, 192, 192, 0.3) 50%,
+                rgba(169, 169, 169, 0.2) 75%,
+                rgba(192, 192, 192, 0.3) 100%);
+            opacity: 0.5;
+        }
+
+        .stars-section .section-title {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stars-section > p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .star-card {
+            background: rgba(240, 147, 251, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid rgba(245, 87, 108, 0.4);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .star-card:hover {
+            transform: translateY(-5px);
+            background: rgba(240, 147, 251, 0.35);
+        }
+
+        .star-placeholder {
+            width: 120px;
+            height: 120px;
+            background: rgba(240, 147, 251, 0.4);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .star-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .star-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .upload-section {
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #f5576c;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .secondary-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Software Vendors Section */
+        .vendors-section {
+            padding: 4rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .vendors-section .section-title {
+            color: white;
+        }
+
+        .vendors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .vendor-card {
+            background: #2a2a2a;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #3a3a3a;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .vendor-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+
+        .vendor-logo {
+            width: 80px;
+            height: 80px;
+            background: #3a3a3a;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .vendor-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .vendor-card p {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .vendor-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .vendor-link:hover {
+            color: #764ba2;
+        }
+
+        .vendor-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0a0a0a;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="clapper-board">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Clapper board base -->
+                        <rect x="10" y="45" width="80" height="45" fill="#2a2a2a" stroke="#000" stroke-width="2"/>
+                        
+                        <!-- Clapper top (OPEN position - angled) -->
+                        <g transform="rotate(-25 50 35)">
+                            <rect x="10" y="20" width="80" height="18" fill="#fff" stroke="#000" stroke-width="2"/>
+                            
+                            <!-- Black and white stripes on clapper -->
+                            <rect x="10" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="42" y="20" width="16" height="18" fill="#000"/>
+                            <rect x="74" y="20" width="16" height="18" fill="#000"/>
+                        </g>
+                        
+                        <!-- Details on base -->
+                        <rect x="15" y="55" width="30" height="3" fill="#667eea"/>
+                        <rect x="15" y="63" width="40" height="3" fill="#667eea"/>
+                        <rect x="15" y="71" width="35" height="3" fill="#667eea"/>
+                    </svg>
+                </div>
+                <div class="logo">TopMovies.com</div>
+                <div class="coming-soon-banner">Coming Soon!</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#about" class="nav-item">
+                    <span class="nav-icon">ℹ️</span>
+                    <span class="nav-label">About</span>
+                </a>
+                <a href="#join" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Join</span>
+                </a>
+                <a href="#reviews" class="nav-item">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Reviews</span>
+                </a>
+                <a href="#theater" class="nav-item">
+                    <span class="nav-icon">🎭</span>
+                    <span class="nav-label">Theater</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>The Future of Cinema</h1>
+        <p class="tagline">Imagination Without Limits</p>
+        <p>Discover, stream, and download movies created entirely by artificial intelligence. 
+           Every frame, every scene, every story - crafted by cutting-edge AI technology.</p>
+        
+        <a href="#" class="cta-button">Explore AI Movies</a>
+    </div>
+
+    <div class="feature-image">
+        <img src="images/topmovies.jpg" alt="AI-Generated Movie Illustration">
+    </div>
+
+    <!-- Main Features -->
+    <section class="features-section">
+        <h2 class="section-title">Why TopMovies.com?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>🎬 AI-Generated</h3>
+                <p>Every movie is created by advanced AI algorithms, bringing unprecedented creativity and unique storytelling to your screen.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📥 Instant Download</h3>
+                <p>Download your favorite AI movies instantly in high quality. Watch offline, anytime, anywhere.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🚀 Unlimited Creativity</h3>
+                <p>Experience stories and visuals that push beyond the boundaries of traditional filmmaking.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🆕 Always Fresh</h3>
+                <p>New AI-generated movies added daily. Never run out of content to explore.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Movie Stars Section -->
+    <section class="stars-section">
+        <h2 class="section-title">Create Your AI Movie Stars</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Design unique AI-generated characters and share them with the community. Your creations can star in movies across the platform!
+        </p>
+        
+        <div class="stars-grid">
+            <div class="star-card">
+                <div class="star-placeholder">👤</div>
+                <h3>Action Hero</h3>
+                <p>Ready for any adventure</p>
+            </div>
+            
+            <div class="star-card">
+                <div class="star-placeholder">👤</div>
+                <h3>Sci-Fi Explorer</h3>
+                <p>Perfect for space epics</p>
+            </div>
+            
+            <div class="star-card">
+                <div class="star-placeholder">👤</div>
+                <h3>Drama Lead</h3>
+                <p>Emotional depth & range</p>
+            </div>
+            
+            <div class="star-card">
+                <div class="star-placeholder">👤</div>
+                <h3>Comedy Star</h3>
+                <p>Timing & charisma</p>
+            </div>
+        </div>
+        
+        <div class="upload-section">
+            <a href="#" class="secondary-button">Upload Your AI Star</a>
+        </div>
+    </section>
+
+    <!-- Software Vendors Section -->
+    <section class="vendors-section">
+        <h2 class="section-title">AI Movie-Making Tools</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; color: #ccc;">
+            Discover powerful tools to create your own AI-generated films. From scriptwriting to final render, these platforms have you covered.
+        </p>
+        
+        <div class="vendors-grid">
+            <div class="vendor-card">
+                <div class="vendor-logo">🎥</div>
+                <h3>CineAI Pro</h3>
+                <p>Complete AI filmmaking suite with advanced scene generation, character creation, and post-production tools.</p>
+                <a href="#" class="vendor-link">Learn More →</a>
+            </div>
+            
+            <div class="vendor-card">
+                <div class="vendor-logo">✨</div>
+                <h3>ScriptGenius</h3>
+                <p>AI-powered screenplay writer that generates compelling stories, dialogue, and plot structures in minutes.</p>
+                <a href="#" class="vendor-link">Learn More →</a>
+            </div>
+            
+            <div class="vendor-card">
+                <div class="vendor-logo">🎞️</div>
+                <h3>RenderBot Studio</h3>
+                <p>Transform your ideas into stunning cinematic sequences with cutting-edge AI rendering technology.</p>
+                <a href="#" class="vendor-link">Learn More →</a>
+            </div>
+        </div>
+        
+        <div class="vendor-cta">
+            <a href="#" class="secondary-button">List Your Tool</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 TopMovies.com - AI-Generated Cinema | The Future is Now</p>
+    </footer>
+</body>
+</html>
